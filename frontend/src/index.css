@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f7;
+}
+
+.root {
+  padding: 20px;
+}
+
+.auth-box,
+.question-form,
+.question-detail {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.auth-logged-in {
+  margin-bottom: 10px;
+}
+
+.auth-tabs button {
+  margin-right: 5px;
+}
+
+.lang-toggle button {
+  margin-left: 5px;
+}
+
+.question-list-item {
+  border-bottom: 1px solid #eee;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.question-list-item:hover {
+  background: #fafafa;
+}
+
+.question-type {
+  font-size: 12px;
+  color: #777;
+}
+
+.option-row input {
+  margin-right: 5px;
+}
+
+.main-layout {
+  display: flex;
+  gap: 10px;
+}
+
+.main-layout .left,
+.main-layout .right {
+  flex: 1;
+}
+
+.error {
+  color: red;
+  margin-top: 4px;
+}
