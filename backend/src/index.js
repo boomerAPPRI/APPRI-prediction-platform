@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('./db');
 const auth = require('./middleware/auth');
@@ -29,7 +29,7 @@ app.post('/api/auth/register', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const hashed = await bcrypt.hash(password, 10);
+    const hashed = await bcrypt.hashSync(password, 10);
 
     const result = await db.query(
       `INSERT INTO users (email, username, password_hash, age_range, country, occupation, token_balance)
@@ -58,7 +58,7 @@ app.post('/api/auth/login', async (req, res) => {
     const user = result.rows[0];
     if (!user) return res.status(400).json({ error: 'Invalid credentials' });
 
-    const ok = await bcrypt.compare(password, user.password_hash);
+    const ok = await bcrypt.compareSync(password, user.password_hash);
     if (!ok) return res.status(400).json({ error: 'Invalid credentials' });
 
     const token = createToken(user);
